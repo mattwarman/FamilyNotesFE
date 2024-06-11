@@ -5,7 +5,7 @@ import { NotesComponent } from './components/notes/notes.component';
 
 const routes: Routes = [
   { path: 'topics', component: TopicsComponent },
-  { path: 'notes', component: NotesComponent },
+  { path: 'notes/:notes', component: NotesComponent },
   { path: 'notes/:id', component: NotesComponent }
 ];
 

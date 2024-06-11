@@ -1,7 +1,3 @@
-mat-list-item {
-  background-color: cornsilk;
-}
-
 mat-raised-button {
   border-radius: 20px !important;
 }
@@ -14,14 +10,3 @@ mat-raised-button {
 .button-row .mat-mdc-button-base {
   margin: 8px 8px 8px 0;
 }
-
-mat-card {
-  padding: 10px;
-  white-space: pre-line;
-}
-
-.mat-card-content {
-  background-color: cornsilk;
-  padding: 5px;
-}
-

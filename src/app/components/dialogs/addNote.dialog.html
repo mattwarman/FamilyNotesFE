@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Add Note</h2>
+<div>
+  <input for="newTitle" [(ngModel)]="data.newTitle" placeholder="Enter your note title">
+  <input for="newText" [(ngModel)]="data.newText" placeholder="Enter your note text">
+</div>
+<div>
+  <button (click)="dialogRef.close()">cancel</button>
+  <button (click)="dialogRef.close()">Ok</button>
+</div>>

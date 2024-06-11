@@ -1,0 +1,9 @@
+<h2 mat-dialog-title>Add Topic</h2>
+<div>
+<input for="newTopic" [(ngModel)]="data.newTopic" placeholder="Enter your topic">
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="dialogRef.close()">cancel</button>
+  <button mat-raised-button color="primary" (click)="dialogRef.close(data.newTopic)">Ok</button>
+</div>>
+

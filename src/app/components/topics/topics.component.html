@@ -1,3 +1,4 @@
+<h4>Your Topics</h4>
 <div class="list row">
   <div class="col-md-8">
     <div class="input-group mb-3">
@@ -5,40 +6,72 @@
         type="text"
         class="form-control"
         placeholder="Search by topic"
-        [(ngModel)]="topic"
+        [(ngModel)]="message"
       />
-<!--      <div class="input-group-append">-->
+      <div class="input-group-append">
+        <button
+          class="btn btn-outline-secondary"
+          type="button"
+          (click)="searchTopic()"
+        >
+          Search
+        </button>
 <!--        <button-->
 <!--          class="btn btn-outline-secondary"-->
 <!--          type="button"-->
-<!--          (click)="searchTopic()"-->
+<!--          (click)="AddTopic()"-->
 <!--        >-->
-<!--          Search-->
+<!--          Add Topic-->
 <!--        </button>-->
-<!--      </div>-->
+<!--        <button-->
+<!--          class="btn btn-outline-secondary"-->
+<!--          type="button"-->
+<!--          (click)="EditTopic()"-->
+<!--        >-->
+<!--          Edit Topic-->
+<!--        </button>-->
+          </div>
     </div>
   </div>
   <div class="col-md-6">
-    <h4>Topics List</h4>
-    <ul class="list-group">
-      @for (topic of topics; track topic.topicId; let i = $index) {
-      <li
-        class="list-group-item"
-        [class.active]="i == currentIndex"
-        (click)="setActiveTopic(topic, i)"
-      >
-        {{ topic.topic }}
-      </li>
+    <div class="flex-container">
+      <div class="button-container">
+        <section>
+          <div class="button-row">
+            <button mat-raised-button color="primary" (click)="createTopic()">Add Topic</button>
+            <button mat-raised-button color="primary" (click)="updateTopic()">Update Topic</button>
+            <button mat-raised-button color="primary" (click)="deleteTopic()">Delete Topic</button>
+            <button mat-raised-button color="primary" (click)="refreshList()">Refresh Topic List</button>
+          </div>
+        </section>
+      </div>
+    </div>
+    @for (topic of topics; track topic.topicId; let i = $index) {
+      <mat-list>
+        <mat-list-item (click)="setActiveTopic(topic, i)">{{ topic.topic }}</mat-list-item>
+      </mat-list>
+    }
+    <div class="col-md-6">
+      <div class="flex-container">
+        <div class="button-container">
+          <section>
+            <div class="button-row">
+              <button mat-raised-button color="primary" (click)="createNote()">Add Note</button>
+              <button mat-raised-button color="primary" (click)="updateNote()">Update Note</button>
+              <button mat-raised-button color="primary" (click)="deleteNote()">Delete Note</button>
+              <button mat-raised-button color="primary" (click)="refreshNotes()">Refresh Note List</button>
+            </div>
+          </section>
+        </div>
+      </div>
+    <h4>Notes for {{ currentTopic.topic }}</h4>
+      @for (note of notes; track note.noteId; let i = $index) {
+          <mat-card class="mat-card-content">
+            <mat-card-title>{{ note.title }}</mat-card-title>
+            <mat-card-content>{{ note.text }}</mat-card-content>
+          </mat-card>
+      } @empty {
+        <span>No Notes added. Please add a note</span>
       }
-    </ul>
-
-    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTopics()">
-      Remove All
-    </button>
-  </div>
-  <div class="col-md-6">
-    <topics
-      [currentTopic]="topic"
-    ></topics>
   </div>
 </div>

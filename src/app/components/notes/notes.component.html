@@ -1,6 +1,16 @@
 <html>
   <title>Welcome to Family Notes ${user}</title>
+  <a routerLink="notes"></a>
   <ng-container>
-
+    <ul class="list-group">
+      @for (note of notes; track note.noteId; let i = $index) {
+        <li
+          class="list-group-item"
+          [class.active]="i == currentIndex"
+        >{{ note.title }} </li>
+      } @empty {
+        <span>No topics added. Please add a topic</span>
+      }
+    </ul>
   </ng-container>
 </html>

@@ -7,13 +7,14 @@ import {FamilyNotesService} from "../../services/family-notes.service";
 import {dateTimestampProvider} from "rxjs/internal/scheduler/dateTimestampProvider";
 
 @Component({
-  selector: 'app-notes',
+  selector: 'notes',
   templateUrl: './notes.component.html',
   styleUrls: ['./notes.component.css']
 })
 
 
 export class NotesComponent implements OnInit {
+//   router = inject(Router)
   currentNote: Note | undefined;
   notes?: Note[];
   currentIndex: number | undefined;
@@ -25,26 +26,31 @@ export class NotesComponent implements OnInit {
   };
   private topicId: any;
 
-  constructor(private familyNoteService: FamilyNotesService) {}
+  constructor() {
+//     this.route.params.subscribe(params) =>{
+//       this.notes = param['notes'];
+//       console.log(params.notes);
+//     }
+  }
 
   ngOnInit(): void {
-    this.topicId = 1;
-    this.retrieveNotes()
+//     this.topicId = 1;
+//     this.retrieveNotes()
   }
 
-  retrieveNotes(): void {
-    this.familyNoteService.getNotesByTopic(this.topicId).subscribe({
-      next:(data) => {
-        this.notes = data;
-        console.log(data);
-      },
-      error: (e) => console.error(e)
-    });
-  }
+//   retrieveNotes(): void {
+//     this.familyNoteService.getNotesByTopic(this.topicId).subscribe({
+//       next:(data) => {
+//         this.notes = data;
+//         console.log(data);
+//       },
+//       error: (e) => console.error(e)
+//     });
+//   }
 
 
   refreshList(): void {
-    this.retrieveNotes();
+//     this.retrieveNotes();
     this.currentNote = {};
     this.currentIndex = -1;
   }

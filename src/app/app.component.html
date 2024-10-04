@@ -1,16 +1,34 @@
 <div>
-  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
-    <a href="#" class="navbar-brand">TerraZane Productions</a>
-    <div class="navbar-nav mr-auto">
-      <li class="nav-item ">
-        <a routerLink="notes" class="nav-link" class="btn btn-primary active" role="button" >View Notes</a>
-      </li>
-      <li class="nav-item">
-        <a  routerLink="topics" class="nav-link" class="btn btn-primary active" role="button" >Add Topic</a>
-      </li>
+  <h1>Family Notes</h1>
+  <h2>Topics</h2>
+  <div *ngFor="let topic of topics let i = index" class="topic">
+    <mat-card appearance="outlined" (click)="selectTopic(i)" [ngClass]="{'card-selected': selectedTopicIndex === i}">
+        <mat-card-title>{{ topic.topic }}</mat-card-title>
+      </mat-card>
+  </div>
+    <div class="button-row">
+      <button mat-raised-button color="primary" (click)="openTopicDialog(false)">Add Topic</button>
+      <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="openTopicDialog(true)">Edit Topic</button>
+      <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="deleteTopic()">Delete Topic</button>
     </div>
-  </nav>
-  <div class="container mt-3">
-    <router-outlet></router-outlet>
+
+
+  <div *ngIf="selectedTopic">
+    <h2>Notes for {{ selectedTopic.topic }}</h2>
+    <section>
+      <div class="button-row">
+        <button mat-raised-button color="primary" (click)="openNoteDialog(false)">Add Note</button>
+        <button mat-raised-button color="primary"  [disabled]= "isNoteDisabled" (click)="openNoteDialog(true)">Edit Note</button>
+        <button mat-raised-button color="primary" [disabled]= "isNoteDisabled" (click)="deleteNote()">Delete Note</button>
+      </div>
+    </section>
+    <div *ngFor="let note of notes let i = index" class="note">
+      <mat-card appearance="outlined" (click)="selectNote(i)" [ngClass]="{'card-selected': selectedNoteIndex === i}">
+        <mat-card-title>{{ note.title }}</mat-card-title>
+        <mat-card-content>
+          <Label>{{ note.text }}</Label>
+        </mat-card-content>
+      </mat-card>
+    </div>
   </div>
 </div>

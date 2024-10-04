@@ -5,7 +5,7 @@ export class Topic {
   topicId?: any;
   userId?: any;
   topic?: string;
-  isSharable?: boolean
   notes?: Note[];
   time?: Time;
+  sharable?: boolean
 }

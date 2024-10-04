@@ -1,0 +1,79 @@
+section {
+  display: table;
+}
+
+button {
+  border-radius: 1.5rem;
+}
+
+.button-label {
+  display: table-cell;
+  font-size: 14px;
+  margin-left: 8px;
+  min-width: 120px;
+}
+
+.button-row {
+  display: table-cell;
+  max-width: 600px;
+}
+
+.button-row .mat-mdc-button-base {
+  margin: 8px 8px 8px 0;
+}
+
+.example-flex-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 120px;
+}
+
+.card-selected {
+  cursor: pointer;
+  color: #283593;
+  background:wheat;
+}
+
+H1 {
+  font-size: 36px;
+  text-align: center;
+}
+
+Label {
+  white-space: pre-wrap;
+}
+
+.mat-button.mat-success,
+.mat-stroked-button.mat-success {
+    color: #155724;
+}
+.mat-button.mat-success:hover,
+.mat-stroked-button.mat-success:hover {
+  background-color: #f0fff3;
+}
+mat-card {
+  width: 30%;
+}
+.mat-raised-button.mat-success,
+.mat-flat-button.mat-success,
+.mat-fab.mat-success,
+.mat-mini-fab.mat-success {
+  color: #f0fff3;
+  background-color: #155724;
+}
+
+.mat-icon-button.mat-success {
+  color:#155724;
+}
+
+.topic-selected {
+  color: #283593;
+  background: orange;
+}
+

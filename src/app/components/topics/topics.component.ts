@@ -16,7 +16,7 @@ import {MatCardModule} from '@angular/material/card';
 export class TopicsComponent implements OnInit {
   deleteMessage= false;
   isUpdated = false;
-  topics?: Topic[];
+  topics?: [];
   notes?: Note[];
   currentIndex = -1;
   message = '';
@@ -74,10 +74,12 @@ export class TopicsComponent implements OnInit {
         this.retrieveTopics();
         this.currentTopic = {};
         this.currentIndex = -1;
+        this.notes = []
       }
 
       setActiveTopic(topic: Topic, index: number): void {
       console.log("topic " + topic.topic + " selected");
+        this.notes = topic.notes as Note[];
         this.currentTopic = topic;
         this.currentIndex = index;
 //         this.router.navigate['notes'];

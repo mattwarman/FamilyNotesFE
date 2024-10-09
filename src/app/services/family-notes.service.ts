@@ -3,8 +3,10 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Topic } from '../models/topic.model';
 import {Note} from "../models/note.model";
+import { catchError, of } from 'rxjs';
 
 const baseTopicUrl = 'http://localhost:8080/api/v1/topic';
+const baseTopicUrlCheck = 'http://localhost:8080/api/v1/topic/check';
 const baseTopicUrlDelete = 'http://localhost:8080/api/v1/topic/delete';
 const baseTopicUrlUpdate = 'http://localhost:8080/api/v1/topic/update';
 const baseNoteUrl = 'http://localhost:8080/api/v1/note';
@@ -18,10 +20,21 @@ export class FamilyNotesService {
 
   constructor(private http: HttpClient) { }
 
-  getAllTopics(): Observable<Topic[]>
+  getAllTopics()
   {
   let headers = new HttpHeaders().set('Access-Control-Allow-Origin', baseTopicUrl);
-    return this.http.get<Topic[]>(baseTopicUrl, { headers:headers});
+    return this.http.get<Topic[]>(baseTopicUrl, { headers:headers})
+      .pipe(
+        catchError(error => {
+          console.log(error);
+          if(error.statusText === 'Unknown Error') {
+            console.log('Error caught locally');
+            return of(null);
+          } else {
+            throw error;
+          }
+        })
+      );
   }
 
   findTopic(text: string): Observable<Topic[]> {
@@ -74,4 +87,9 @@ export class FamilyNotesService {
   deleteNote(noteId: any) {
     return this.http.delete(`${baseNoteUrlDelete}/${noteId}`);
     }
+
+  checkOnline() {
+  let headers = new HttpHeaders({'Access-Control-Allow-Origin': 'baseTopicUrlUpdate', 'content-type': 'application/json' });
+    return this.http.get<string>(baseTopicUrlCheck, {headers:headers});
+  }
 }

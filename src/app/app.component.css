@@ -40,6 +40,12 @@ button {
   background:wheat;
 }
 
+.container {
+  max-height: 400px; /* Adjust as needed */
+  max-width: 35%;
+  overflow-y: auto;
+}
+
 H1 {
   font-size: 36px;
   text-align: center;
@@ -58,7 +64,7 @@ Label {
   background-color: #f0fff3;
 }
 mat-card {
-  width: 30%;
+  width: 100%;
 }
 .mat-raised-button.mat-success,
 .mat-flat-button.mat-success,
@@ -70,6 +76,10 @@ mat-card {
 
 .mat-icon-button.mat-success {
   color:#155724;
+}
+
+textarea {
+  min-height: 200px;
 }
 
 .topic-selected {

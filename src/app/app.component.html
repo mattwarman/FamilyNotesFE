@@ -1,16 +1,24 @@
 <div>
   <h1>Family Notes</h1>
   <h2>Topics</h2>
-  <div *ngFor="let topic of topics let i = index" class="topic">
-    <mat-card appearance="outlined" (click)="selectTopic(i)" [ngClass]="{'card-selected': selectedTopicIndex === i}">
-        <mat-card-title>{{ topic.topic }}</mat-card-title>
-      </mat-card>
-  </div>
+  <div>
     <div class="button-row">
       <button mat-raised-button color="primary" (click)="openTopicDialog(false)">Add Topic</button>
       <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="openTopicDialog(true)">Edit Topic</button>
       <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="deleteTopic()">Delete Topic</button>
     </div>
+<!--     <mat-form-field appearance="outline">-->
+<!--        <mat-label>Search Topics</mat-label>-->
+<!--        <input type="text" matInput placeholder="Search by topic" [(ngModel)]="searchTopic">-->
+<!--        <mat-icon matSuffix>search</mat-icon>-->
+<!--      </mat-form-field>-->
+  </div>
+  <div class="container">
+    <mat-card appearance="outlined" *ngFor="let topic of filteredTopics let i = index" class="topic"
+              (click)="selectTopic(i)" [ngClass]="{'card-selected': selectedTopicIndex === i}">
+        <mat-card-title>{{ topic.topic }}</mat-card-title>
+      </mat-card>
+  </div>
 
 
   <div *ngIf="selectedTopic">
@@ -22,8 +30,9 @@
         <button mat-raised-button color="primary" [disabled]= "isNoteDisabled" (click)="deleteNote()">Delete Note</button>
       </div>
     </section>
-    <div *ngFor="let note of notes let i = index" class="note">
-      <mat-card appearance="outlined" (click)="selectNote(i)" [ngClass]="{'card-selected': selectedNoteIndex === i}">
+    <div class="container">
+      <mat-card appearance="outlined" *ngFor="let note of notes let i = index" (click)="selectNote(i)"
+                [ngClass]="{'card-selected': selectedNoteIndex === i}"class="note">
         <mat-card-title>{{ note.title }}</mat-card-title>
         <mat-card-content>
           <Label>{{ note.text }}</Label>

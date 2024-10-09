@@ -2,14 +2,6 @@
 @use '@angular/material' as mat;
 
 
-$theme: mat.define-theme((
-  color: (
-    theme-type: light,
-    primary: mat.$azure-palette,
-    tertiary: mat.$blue-palette,
-  )
-));
-
 body {
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;

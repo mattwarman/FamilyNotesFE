@@ -13,6 +13,8 @@ import { TopicDialogComponent } from './dialogs/topic-dialog/topic-dialog.compon
 import { NoteDialogComponent } from './dialogs/note-dialog/note-dialog.component';
 import { DeleteConfirmationDialogComponent } from './dialogs/delete-confirmation-dialog/delete-confirmation-dialog.component';
 import { FamilyNotesService } from './services/family-notes.service';
+import { LocalService } from './services/local.service';
+import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -25,6 +27,7 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    FormsModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -34,7 +37,7 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [FamilyNotesService],
+  providers: [FamilyNotesService, LocalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

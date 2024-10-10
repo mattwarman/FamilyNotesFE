@@ -7,11 +7,12 @@
       <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="openTopicDialog(true)">Edit Topic</button>
       <button mat-raised-button color="primary" [disabled]= "isTopicDisabled" (click)="deleteTopic()">Delete Topic</button>
     </div>
-<!--     <mat-form-field appearance="outline">-->
-<!--        <mat-label>Search Topics</mat-label>-->
-<!--        <input type="text" matInput placeholder="Search by topic" [(ngModel)]="searchTopic">-->
-<!--        <mat-icon matSuffix>search</mat-icon>-->
-<!--      </mat-form-field>-->
+    <div class="searchBar">
+     <mat-form-field appearance="outline">
+        <mat-label>Search Topics</mat-label>
+        <input type="text" matInput placeholder="Search by topic" [(ngModel)]="searchTopic" (input)="filterTopics()">
+      </mat-form-field>
+    </div>
   </div>
   <div class="container">
     <mat-card appearance="outlined" *ngFor="let topic of filteredTopics let i = index" class="topic"

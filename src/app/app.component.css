@@ -78,6 +78,10 @@ mat-card {
   color:#155724;
 }
 
+.searchBar {
+  display: inline-block;
+}
+
 textarea {
   min-height: 200px;
 }
